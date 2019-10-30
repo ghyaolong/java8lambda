@@ -1,8 +1,8 @@
 package com.test;
 
-import org.testng.annotations.Test;
 
-import java.math.BigDecimal;
+import org.junit.Test;
+
 import java.util.Comparator;
 import java.util.function.Consumer;
 import java.util.function.Supplier;

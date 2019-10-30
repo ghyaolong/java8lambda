@@ -1,11 +1,15 @@
 package com.test;
 
+import java.util.Objects;
+
 public class Employee {
 
     private String id;
     private String userName;
     private Integer age;
     private Double salary;
+
+    private Status status;
 
     public Employee() {
     }
@@ -15,6 +19,14 @@ public class Employee {
         this.userName = userName;
         this.age = age;
         this.salary = salary;
+    }
+
+    public Employee(String id, String userName, Integer age, Double salary, Status status) {
+        this.id = id;
+        this.userName = userName;
+        this.age = age;
+        this.salary = salary;
+        this.status = status;
     }
 
     public String getId() {
@@ -49,6 +61,14 @@ public class Employee {
         this.salary = salary;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -56,6 +76,27 @@ public class Employee {
                 ", userName='" + userName + '\'' +
                 ", age=" + age +
                 ", salary=" + salary +
+                ", status=" + status +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return Objects.equals(id, employee.id) &&
+                Objects.equals(userName, employee.userName) &&
+                Objects.equals(age, employee.age) &&
+                Objects.equals(salary, employee.salary);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, userName, age, salary);
+    }
+
+    public enum  Status {
+        FREE,BUSY,VOCATION;
     }
 }
